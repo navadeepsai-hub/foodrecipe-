@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | FoodRecipe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <form action="" id="loginForm">
+                <p class="subtitle">Welcome back!</p>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter Email"
+                        required
+                    />
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter Password"
+                        required
+                    />
+                </div>
+                <button type="submit">Login</button>
+                <p id="message" aria-live="polite"></p>
+            </form>
+            <p class="login-link">Don't have an Account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find(function (item) {
+                return item.email === email && item.password === password;
+            });
+            if (user) {
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                message.textContent = "Login successful";
+                message.className = "success";
+                setTimeout(function () { window.location.href = "index.html"; }, 700);
+            } else {
+                message.textContent = "Invalid email or password";
+                message.className = "error";
+            }
+        });
+    </script>
+</body>
+</html>

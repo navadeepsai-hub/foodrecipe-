@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodRecipes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+    <main class="home-card">
+        <div>
+            <h1>FoodRecipes</h1>
+        </div>
+        <nav class="home-actions" aria-label="Account options">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </main>
+    <p id="welcome-message" class="welcome-message" aria-live="polite"></p>
+    <section class="food-gallery" aria-label="Featured dishes">
+        <img src="https://b.zmtcdn.com/data/pictures/6/20088466/58de4485c1e850ed8b7472f8537f72f0.jpg?crop=750%3A500%3B%2A%2C%2A&fit=around%7C750%3A500" alt="Chicken biryani with basmati rice and spices">
+        <img src="https://media1.agfg.com.au/images/listing/75681/gallery/pint-size-indian-4.jpg" alt="Butter chicken in a copper bowl">
+        <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Cc_fit/FOOD_CATALOG/IMAGES/CMS/2025/12/11/77a31327-2ca8-4f70-bd78-96513b8db20d_838cbe58-c03b-4adc-a869-a2aa3cc704c0.jpg" alt="Grilled paneer tikka with chutney">
+    </section>
+    <script>
+        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+        if (loggedInUser) {
+            document.getElementById("welcome-message").textContent = "Welcome, " + loggedInUser.name + "!";
+        }
+    </script>
+</body>
+</html>
